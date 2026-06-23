@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suman Chand — Hospitality Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --charcoal: #1A1A1A;
+    --cream: #F5F0E8;
+    --gold: #C9A96E;
+    --gold-light: #E8D5A3;
+    --green: #2D4A2D;
+    --green-light: #3D6B3D;
+    --white: #FDFAF5;
+    --muted: #8A8075;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--charcoal);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(26,26,26,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  .nav-mute {
+    background: none;
+    border: 1px solid rgba(201,169,110,0.4);
+    color: var(--gold);
+    padding: 0.4rem 0.9rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .nav-mute:hover { background: rgba(201,169,110,0.15); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  /* Portrait video — centered, fills height */
+  .hero-video-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-video-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(26,26,26,0.88) 0%,
+      rgba(26,26,26,0.55) 50%,
+      rgba(26,26,26,0.80) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero-video {
+    /* Portrait: taller than wide */
+    width: auto;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+    /* If video is truly portrait (9:16), allow it to be narrower */
+  }
+
+  /* Gold frame around video */
+  .hero-video-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(340px, 38vw);
+    aspect-ratio: 9/16;
+    border: 1px solid rgba(201,169,110,0.35);
+    box-shadow: 0 0 0 8px rgba(201,169,110,0.06), 0 0 80px rgba(201,169,110,0.08);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hero-video-frame::before,
+  .hero-video-frame::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.7;
+  }
+
+  .hero-video-frame::before {
+    top: -1px; left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+
+  .hero-video-frame::after {
+    bottom: -1px; right: -1px;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* The portrait video itself inside the frame */
+  .hero-video-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(340px, 38vw);
+    aspect-ratio: 9/16;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .hero-video-inner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ─── HERO CONTENT ─── */
+  .hero-content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: grid;
+    grid-template-columns: 1fr min(340px, 38vw) 1fr;
+    gap: 0;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+  }
+
+  .hero-left {
+    padding-right: 3rem;
+  }
+
+  .hero-right {
+    padding-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Empty middle column holds the video visually */
+  .hero-center { /* just a spacer */ }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .knife-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.75rem 0;
+  }
+
+  .knife-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    max-width: 80px;
+  }
+
+  .knife-svg {
+    opacity: 0.65;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    opacity: 0.85;
+    line-height: 1.55;
+    max-width: 320px;
+  }
+
+  .hero-roles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-role {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-role span.dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* Right side content */
+  .hero-bio {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--cream);
+    opacity: 0.72;
+    max-width: 280px;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.85rem 1.75rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(201,169,110,0.4);
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.85rem 1.75rem;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { background: rgba(201,169,110,0.08); border-color: var(--gold); }
+
+  /* Social icons */
+  .hero-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(201,169,110,0.25);
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Scroll cue */
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.45;
+  }
+
+  .hero-scroll span {
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .scroll-track {
+    width: 1px;
+    height: 40px;
+    background: rgba(201,169,110,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-track::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 1px;
+    height: 40px;
+    background: var(--gold);
+    animation: scrollDown 1.6s ease-in-out infinite;
+  }
+
+  @keyframes scrollDown {
+    to { top: 40px; }
+  }
+
+  /* ─── ABOUT TEASER ─── */
+  .about-strip {
+    background: var(--green);
+    padding: 4rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(201,169,110,0.2);
+    border-bottom: 1px solid rgba(201,169,110,0.2);
+  }
+
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .strip-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(201,169,110,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .strip-text h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.15rem;
+  }
+
+  .strip-text p {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.6);
+    text-transform: uppercase;
+  }
+
+  /* ─── SECTION GENERIC ─── */
+  section {
+    padding: 7rem 3rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3rem;
+    line-height: 1.15;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: rgba(201,169,110,0.1);
+  }
+
+  .exp-card {
+    background: rgba(255,255,255,0.025);
+    padding: 2.5rem;
+    border: 1px solid rgba(201,169,110,0.08);
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  .exp-card:hover {
+    background: rgba(201,169,110,0.05);
+    border-color: rgba(201,169,110,0.2);
+  }
+
+  .exp-date {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-place {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .exp-desc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.6);
+  }
+
+  /* ─── SERVICES ─── */
+  .services-bg {
+    background: #111;
+    margin: 0 -3rem;
+    padding: 7rem 3rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    border-top: 1px solid rgba(201,169,110,0.3);
+    padding-top: 2rem;
+  }
+
+  .service-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: rgba(201,169,110,0.12);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: rgba(245,240,232,0.55);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-field label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .form-field input,
+  .form-field textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.18);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus { border-color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid rgba(201,169,110,0.15);
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0.5;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  /* ─── PLACEHOLDER VIDEO STYLES ─── */
+  .video-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #1e2a1e 0%, #0d1a0d 40%, #1a1208 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: rgba(201,169,110,0.4);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .video-placeholder svg {
+    opacity: 0.35;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+
+    .hero-content {
+      grid-template-columns: 1fr;
+      padding: 2rem 1.5rem;
+      gap: 2rem;
+      min-height: auto;
+      padding-top: 2rem;
+      padding-bottom: 6rem;
+    }
+
+    .hero-center { display: none; }
+    .hero-left { padding-right: 0; }
+    .hero-right { padding-left: 0; }
+
+    .hero-video-frame,
+    .hero-video-inner {
+      width: 60vw;
+      max-width: 240px;
+    }
+
+    .exp-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-strip { gap: 2rem; padding: 3rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  /* Fade-in animation on load */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .fade-in:nth-child(2) { animation-delay: 0.15s; }
+  .fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in:nth-child(4) { animation-delay: 0.45s; }
+  .fade-in:nth-child(5) { animation-delay: 0.6s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in { animation: none; opacity: 1; transform: none; }
+    .scroll-track::after { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">S · C</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-mute" id="muteBtn" aria-label="Toggle mute">🔇 Mute</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero" style="padding:0; max-width:none; margin:0;">
+
+  <!-- Portrait video centered behind everything -->
+  <div class="hero-video-wrap">
+    <!-- Portrait video (9:16) — replace src with your actual video file -->
+    <div class="hero-video-inner">
+      <!--
+        INSTRUCTIONS: Replace the video-placeholder div below with your actual video:
+        <video autoplay muted loop playsinline id="heroVideo">
+          <source src="your-video.mp4" type="video/mp4">
+        </video>
+      -->
+      <video autoplay muted loop playsinline id="heroVideo">
+    <source src="videos/hero-video.mp4" type="video/mp4">
+</video>
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+        <span>Portrait Video<br>9:16 · 1 min loop</span>
+        <span style="font-size:0.6rem;opacity:0.6">Replace with your cinematic video</span>
+      </div>
+    </div>
+    <!-- Gold decorative frame around video -->
+    <div class="hero-video-frame"></div>
+  </div>
+
+  <!-- Text content flanking the video -->
+  <div class="hero-content">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="fade-in">
+        <div class="hero-eyebrow">BHM Graduate · Hospitality Professional</div>
+        <h1 class="hero-name">
+          Suman<br><em>Chand</em>
+        </h1>
+        <div class="knife-divider">
+          <span class="knife-line"></span>
+          <!-- Knife icon -->
+          <svg class="knife-svg" width="32" height="14" viewBox="0 0 64 16" fill="none">
+            <path d="M2 8 L44 2 L60 8 L44 14 Z" fill="#C9A96E" opacity="0.6"/>
+            <rect x="0" y="6.5" width="14" height="3" rx="1" fill="#8A8075"/>
+          </svg>
+          <span class="knife-line" style="background:linear-gradient(to left, var(--gold), transparent);"></span>
+        </div>
+        <div class="hero-roles">
+          <span class="hero-role"><span class="dot"></span>Line Cook</span>
+          <span class="hero-role"><span class="dot"></span>F&amp;B Instructor</span>
+          <span class="hero-role"><span class="dot"></span>Graphic Designer</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER spacer (holds video space) -->
+    <div class="hero-center"></div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <div class="fade-in">
+        <p class="hero-bio">
+          A Bachelor of Hotel Management graduate with hands-on U.S. internship experience at prestigious resorts — bringing culinary precision and warm hospitality to every role.
+        </p>
+      </div>
+      <div class="fade-in hero-stats">
+        <div class="stat">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">2</span>
+          <span class="stat-label">U.S. Resort Internships</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">BHM</span>
+          <span class="stat-label">Graduate</span>
+        </div>
+      </div>
+      <div class="fade-in hero-ctas">
+        <a href="#experience" class="btn-primary">View Journey ↓</a>
+        <a href="#contact" class="btn-ghost">Get In Touch</a>
+      </div>
+      <div class="fade-in hero-social">
+        <a href="https://www.linkedin.com/in/suman-chand-6a083923a/" class="social-link" target="_blank" rel="noopener" title="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.instagram.com/sumanchand823/" class="social-link" target="_blank" rel="noopener" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://web.facebook.com/sumanchand823" class="social-link" target="_blank" rel="noopener" title="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-track"></div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip" id="about">
+  <div class="strip-item">
+    <div class="strip-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.5">
+        <path d="M3 2l1.578 5.895A1 1 0 0 0 5.54 8.5l3.46 1.5-1 7 4-3 4 3-1-7 3.46-1.5a1 1 0 0 0 .962-.605L21 2"/>
+        <path d="M3 8h18"/>
+      </svg>
+    </div>
+    <div class="strip-text">
+      <h4>Culinary Arts</h4>
+      <p>Line Cook · Mise en place</p>
+    </div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.5">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <div class="strip-text">
+      <h4>F&amp;B Instruction</h4>
+      <p>Training · Curriculum</p>
+    </div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.5">
+        <circle cx="12" cy="12" r="3"/><path d="M3 12h3m12 0h3M12 3v3m0 12v3M5.636 5.636l2.122 2.122M16.243 16.243l2.121 2.121M5.636 18.364l2.121-2.121M16.243 7.757l2.122-2.121"/>
+      </svg>
+    </div>
+    <div class="strip-text">
+      <h4>Creative Design</h4>
+      <p>Visual · Branding</p>
+    </div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.5">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+    </div>
+    <div class="strip-text">
+      <h4>U.S. Internships</h4>
+      <p>Prestigious Resorts</p>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-eyebrow">Career Journey</p>
+  <h2 class="section-title">Professional<br><em style="font-style:italic;color:var(--gold);">Experience</em></h2>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <p class="exp-date">2022 – Present</p>
+      <h3 class="exp-role">Line Cook</h3>
+      <p class="exp-place">Fine Dining Restaurant · Nepal</p>
+      <p class="exp-desc">Responsible for mise en place, station management, and consistent execution of high-volume service. Maintained kitchen standards aligned with international hospitality benchmarks.</p>
+    </div>
+    <div class="exp-card">
+      <p class="exp-date">2021 – 2022</p>
+      <h3 class="exp-role">F&B Instructor</h3>
+      <p class="exp-place">Hospitality Institute · Kathmandu</p>
+      <p class="exp-desc">Developed and delivered culinary and food & beverage service curriculum. Mentored students in both practical kitchen skills and front-of-house hospitality standards.</p>
+    </div>
+    <div class="exp-card">
+      <p class="exp-date">2019 – 2020</p>
+      <h3 class="exp-role">Culinary Intern</h3>
+      <p class="exp-place">Luxury Resort · United States</p>
+      <p class="exp-desc">Hands-on U.S. internship at a prestigious resort property. Gained exposure to world-class kitchen operations, multi-outlet dining concepts, and international service culture.</p>
+    </div>
+    <div class="exp-card">
+      <p class="exp-date">2018 – 2019</p>
+      <h3 class="exp-role">F&amp;B Service Intern</h3>
+      <p class="exp-place">Upscale Hotel · United States</p>
+      <p class="exp-desc">Second U.S. placement focusing on front-of-house operations, banquet service, and guest relations. Contributed to maintaining the hotel's five-star service ethos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div class="services-bg" id="services" style="padding:0; margin:0;">
+  <section style="padding: 7rem 3rem;">
+    <p class="section-eyebrow">What I Offer</p>
+    <h2 class="section-title">Services &amp;<br><em style="font-style:italic;color:var(--gold);">Expertise</em></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3 class="service-title">Culinary Consultation</h3>
+        <p class="service-desc">Menu development, kitchen workflow optimization, and food quality assessment for restaurants and hospitality businesses seeking international standards.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3 class="service-title">Hospitality Training</h3>
+        <p class="service-desc">Structured F&amp;B training programs covering service etiquette, kitchen protocols, and guest experience management for hospitality teams.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3 class="service-title">Creative Design</h3>
+        <p class="service-desc">Graphic design services with a hospitality focus: menus, branding identities, promotional materials, and digital assets that reflect culinary excellence.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-eyebrow">Let's Connect</p>
+  <h2 class="section-title">Get In<br><em style="font-style:italic;color:var(--gold);">Touch</em></h2>
+  <div class="contact-inner">
+    <div>
+      <p style="font-size:0.88rem;line-height:1.8;color:rgba(245,240,232,0.65);margin-bottom:2.5rem;">
+        Whether you're looking for a dedicated culinary professional, a hospitality trainer, or a creative collaborator — I'd love to hear from you.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <div>
+          <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Location</p>
+          <p style="font-size:0.88rem;color:var(--cream);">Kathmandu, Nepal</p>
+        </div>
+        <div>
+          <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Connect</p>
+          <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+            <a href="https://www.linkedin.com/in/suman-chand-6a083923a/" class="social-link" target="_blank" rel="noopener" style="width:auto;padding:0.5rem 1rem;font-size:0.7rem;letter-spacing:0.12em;color:var(--gold);border-color:rgba(201,169,110,0.3);text-decoration:none;">LinkedIn ↗</a>
+            <a href="https://www.instagram.com/sumanchand823/" class="social-link" target="_blank" rel="noopener" style="width:auto;padding:0.5rem 1rem;font-size:0.7rem;letter-spacing:0.12em;color:var(--gold);border-color:rgba(201,169,110,0.3);text-decoration:none;">Instagram ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="form-field">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Aarav Sharma">
+      </div>
+      <div class="form-field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="hello@example.com">
+      </div>
+      <div class="form-field">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" placeholder="Tell me about your project or opportunity…"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;cursor:pointer;">Send Message ↗</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Suman Chand — Hospitality Professional</span>
+  <span style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);opacity:1;">Crafted with precision</span>
+</footer>
+
+<script>
+  // Mute toggle for future video
+  const muteBtn = document.getElementById('muteBtn');
+  let muted = true;
+  muteBtn.addEventListener('click', () => {
+    const video = document.getElementById('heroVideo');
+    if (video) {
+      muted = !muted;
+      video.muted = muted;
+      muteBtn.textContent = muted ? '🔇 Mute' : '🔊 Sound';
+    }
+  });
+
+  // Scroll-triggered fade-in for sections
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.exp-card, .service-card, .strip-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
